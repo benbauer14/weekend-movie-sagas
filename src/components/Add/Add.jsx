@@ -39,18 +39,43 @@ function Add () {
         }
     }
     return(
-        <div className='Add'>
-            <h2>In Add</h2>
-            <label>Title: </label><input type='text' onChange={(event) => setTitle(event.target.value)}/><br></br>
-            <label>Movie Poster URL: </label><input type='text' onChange={(event) => setPoster(event.target.value)}/><br></br>
-            <label>Description: </label><textarea className='descriptionInput' onChange={(event) => setDescription(event.target.value)}></textarea><br></br>
-            <label>Genre: </label>
-            <select onChange={(event) => setGenre_id(event.target.value)}>
-                <AddList genres = {genres}/>
-            </select>
-            <button onClick={() => {submitMovie()}}>Save</button>
-            <button onClick={() => {history.push('/')}}>Cancel</button>
+        <>
+        <div className='header'>
+            <div className='headContainer'>
+            </div>
+            <div className='headContainer'>
+                <h1>The Movies Saga!</h1>
+            </div>
+            <div className='headContainer'>
+                <p><button onClick={() => {history.push('/')}}>Home</button>
+                </p>
+            </div>
         </div>
+        <div className='Add'>
+            <div></div>
+            <div className="AddLabels">
+                <p><label>Title: </label></p>
+                <p><label>Movie Poster URL: </label></p>
+                <p className="descriptionLabel"><label >Description: </label></p>
+                <p><label>Genre: </label></p>
+
+            </div>
+            <div className="AddInputs">
+                <p><input type='text' onChange={(event) => setTitle(event.target.value)}/></p>
+                <p><input type='text' className="posterInput" onChange={(event) => setPoster(event.target.value)}/></p>
+                <p><textarea className='descriptionInput' onChange={(event) => setDescription(event.target.value)}></textarea></p>
+                
+                <p><select onChange={(event) => setGenre_id(event.target.value)}>
+                    <AddList genres = {genres}/>
+                </select></p>
+                <button onClick={() => {submitMovie()}}>Save</button>
+                <button onClick={() => {history.push('/')}}>Cancel</button>
+            </div>
+            <div className='imagePreview'>
+                <img src={poster}/>
+            </div>
+        </div>
+        </>
     )
 }
 export default Add

@@ -10,6 +10,9 @@
 
 .headContainer button{
   margin-top: 20px;
+  padding:10px 20px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  border-radius: 4px;
 }
 
 .header{
@@ -56,7 +59,7 @@
 
   }
 
-  .grid-container, .detailsMain, .Add {
+  .grid-container, .detailsMain, .Add, .Edit {
     background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/35mm_movie_negative.jpg/1280px-35mm_movie_negative.jpg');
     background-repeat: no-repeat;
     background-position: center;
@@ -92,7 +95,7 @@
   font-size: 1vw;
 }
 
-.description button, .editInputs button{
+.description button, .editInputs button, .AddInputs button{
  float: left;
  padding:10px 20px;
  margin: 2px;
@@ -108,10 +111,9 @@
   width:500px;
   height:300px;
 }
-.Add{
-    text-align: left;
-}
+
 .details img{
   min-height: 400px;
   margin-bottom: 95%;
 }
+

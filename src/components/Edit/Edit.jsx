@@ -56,7 +56,7 @@ function Edit (){
                 </p>
             </div>
         </div>
-        <div className='Add'>
+        <div className='Edit'>
             <div></div>
             <div className="editLabels">
                 <p><label>Title: </label></p>
