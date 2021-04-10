@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import AddList from '../AddList/AddList'
+import './Edit.css'
 
 function Edit (){
 
@@ -46,27 +47,38 @@ function Edit (){
         <>        
         <div className='header'>
             <div className='headContainer'>
-                <h1></h1>
             </div>
             <div className='headContainer'>
                 <h1>The Movies Saga!</h1>
             </div>
             <div className='headContainer'>
                 <p><button onClick={() => {history.push('/')}}>Home</button>
-                <button onClick={() => {history.push('/Add')}}>Add</button></p>
+                </p>
             </div>
         </div>
         <div className='Add'>
-            <label>Title: </label><input type='text' value={title} onChange={(event) => setTitle(event.target.value)}/><br></br>
-            <label>Movie Poster URL: </label><input type='text' value={poster} onChange={(event) => setPoster(event.target.value)}/><br></br>
-            <label>Description: </label><textarea className='descriptionInput' onChange={(event) => setDescription(event.target.value)}>{description}</textarea><br></br>
-            <label>Genre: </label>
-            <select value={genre_id} onChange={(event) => setGenre_id(event.target.value)}>
-                <AddList genres = {genres}/>
-            </select><br></br>
-            <button onClick={() => editMovie()}>Update</button>
-            <button onClick={() => history.push('/Details')}>Back</button>
+            <div></div>
+            <div className="editLabels">
+                <p><label>Title: </label></p>
+                <p><label>Movie Poster URL: </label></p>
+                <p className="descriptionLabel"><label >Description: </label></p>
+                <p><label>Genre: </label></p>
             </div>
+            <div className="editInputs">
+                <p><input type='text' value={title} onChange={(event) => setTitle(event.target.value)}/></p>
+                <p><input type='text' className='posterInput' value={poster} onChange={(event) => setPoster(event.target.value)}/></p>
+                <p><textarea className='descriptionInput' onChange={(event) => setDescription(event.target.value)}>{description}</textarea></p>
+                
+                <p><select value={genre_id} onChange={(event) => setGenre_id(event.target.value)}>
+                    <AddList genres = {genres}/>
+                </select></p>
+                <button onClick={() => editMovie()}>Update</button>
+                <button onClick={() => history.push('/Details')}>Back</button>
+            </div>
+            <div className='imagePreview'>
+                <img src={poster} alt={title}/>
+            </div>
+        </div>
             </>
             )
 

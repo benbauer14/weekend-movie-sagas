@@ -1,0 +1,27 @@
+.Add{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 3fr ;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      ". . . . "
+    }
+
+.descriptionLabel{
+    margin-bottom: 315px;
+}
+
+.editLabels{
+    margin-bottom: 150%;
+    text-align: right;
+    margin-right: 5px;
+    text-shadow: 1px 1px darkgrey;
+}
+
+.posterInput{
+    width: 500px;
+}
+.imagePreview img{
+    margin: 10px;
+    min-height: 400px;
+}
