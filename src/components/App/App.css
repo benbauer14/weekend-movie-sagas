@@ -53,19 +53,66 @@
     ". . . ."
     ". . . ."
     ". . . .";
+
+  }
+
+  .grid-container, .detailsMain {
     background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/35mm_movie_negative.jpg/1280px-35mm_movie_negative.jpg');
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
-    background-size:cover;   
+    background-size:cover;
+    overflow: auto;
+    height: 100%;
   }
-
 
   .movie h3{
     font-size: 1vw;
   }
 
+ .detailsMain{
+  display: grid;
+  grid-template-columns: 1fr 1fr 3fr ;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    ". . . . . . "
+  }
 
-img{
+
+.movie img{
   max-height: 250px;
+}
+
+.description p{
+  border: solid 2px grey;
+  background-image: linear-gradient(to bottom right, rgb(77, 75, 75), lightgrey);
+  width: 70%;
+  margin-top: 10%;
+  font-size: 1vw;
+}
+
+.description button{
+ float: left;
+ padding:10px 20px;
+ margin: 2px;
+ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+ border-radius: 4px;
+}
+
+.details{
+  float:left;
+}
+
+.descriptionInput{
+  width:300px;
+  height:300px;
+
+}
+.Add{
+    text-align: left;
+}
+.details img{
+  min-height: 400px;
+  margin-bottom: 95%;
 }

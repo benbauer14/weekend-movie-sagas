@@ -10,19 +10,35 @@ function Details (){
     }
 
     return(
-    <div className='detailsMain'>
-        <h2>In Details</h2>
-        <button onClick={() => {backHome()}}>Back</button>
-        <div className='details'>
-            <h3>{details.title}</h3>
-            <img src={details.poster} alt={details.title}/>
+        <>        
+        <div className='header'>
+            <div className='headContainer'>
+                <h1></h1>
+            </div>
+            <div className='headContainer'>
+                <h1>The Movies Saga!</h1>
+            </div>
+            <div className='headContainer'>
+                <p><button onClick={() => {history.push('/')}}>Home</button></p>
+            </div>
         </div>
-        <div className='description'>
-            {details.description}<br></br>
-            <button onClick={() => {history.push('/')}}>Back</button>
-            <button onClick={() => {history.push('/Edit')}}>Edit</button>
+        <div className='test'>
+            <div className='detailsMain'>
+                <div></div>
+                <div className='details'>
+
+
+                    <h1>{details.title}</h1>
+                    <img src={details.poster} alt={details.title}/>
+                </div>
+                <div className='description'>
+                    <p>{details.description}</p>
+                    <button onClick={() => {history.push('/')}}>Back</button>
+                    <button onClick={() => {history.push('/Edit')}}>Edit</button>
+                </div>
+            </div>
         </div>
-    </div>
+    </>
     )
 }
 export default Details

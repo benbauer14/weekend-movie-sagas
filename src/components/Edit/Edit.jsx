@@ -43,8 +43,20 @@ function Edit (){
         }
     }
     return(
+        <>        
+        <div className='header'>
+            <div className='headContainer'>
+                <h1></h1>
+            </div>
+            <div className='headContainer'>
+                <h1>The Movies Saga!</h1>
+            </div>
+            <div className='headContainer'>
+                <p><button onClick={() => {history.push('/')}}>Home</button>
+                <button onClick={() => {history.push('/Add')}}>Add</button></p>
+            </div>
+        </div>
         <div className='Add'>
-            <h2>In Edit</h2>
             <label>Title: </label><input type='text' value={title} onChange={(event) => setTitle(event.target.value)}/><br></br>
             <label>Movie Poster URL: </label><input type='text' value={poster} onChange={(event) => setPoster(event.target.value)}/><br></br>
             <label>Description: </label><textarea className='descriptionInput' onChange={(event) => setDescription(event.target.value)}>{description}</textarea><br></br>
@@ -55,6 +67,7 @@ function Edit (){
             <button onClick={() => editMovie()}>Update</button>
             <button onClick={() => history.push('/Details')}>Back</button>
             </div>
+            </>
             )
 
 }
