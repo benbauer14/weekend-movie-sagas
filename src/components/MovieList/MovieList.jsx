@@ -15,12 +15,16 @@ function MovieList() {
 
     const getDetails = (id) => {
         history.push('/Details')
+        console.log('in getDetails')
         dispatch({type: 'FETCH_MOVIE_ID', payload: id})
     }
-
+    const addMovie = () => {
+      history.push('/Add')
+    }
 
     return (
         <main>
+            <button onClick={() => {addMovie()}}>To Add</button>
             <h1>MovieList</h1>
             <section className="movies">
                 {movies.map(movie => {

@@ -1,0 +1,17 @@
+.description{
+    float:right;
+  }
+  .details{
+    float:left;
+  }
+  .detailsMain{
+    display: inline;
+  }
+  .descriptionInput{
+    width:300px;
+    height:300px;
+    ;
+  }
+  .Add{
+      text-align: left;
+  }
