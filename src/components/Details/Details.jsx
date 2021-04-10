@@ -7,7 +7,7 @@ function Details (){
 
     const backHome = () => {
     history.push('/')
-}
+    }
 
     return(
     <div className='detailsMain'>
@@ -18,7 +18,9 @@ function Details (){
             <img src={details.poster} alt={details.title}/>
         </div>
         <div className='description'>
-            {details.description}
+            {details.description}<br></br>
+            <button onClick={() => {history.push('/')}}>Back</button>
+            <button onClick={() => {history.push('/Edit')}}>Edit</button>
         </div>
     </div>
     )

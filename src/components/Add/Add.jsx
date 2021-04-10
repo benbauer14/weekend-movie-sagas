@@ -43,12 +43,13 @@ function Add () {
             <h2>In Add</h2>
             <label>Title: </label><input type='text' onChange={(event) => setTitle(event.target.value)}/><br></br>
             <label>Movie Poster URL: </label><input type='text' onChange={(event) => setPoster(event.target.value)}/><br></br>
-            <label>Description: </label><input className='descriptionInput' type='text' onChange={(event) => setDescription(event.target.value)}/><br></br>
+            <label>Description: </label><textarea className='descriptionInput' onChange={(event) => setDescription(event.target.value)}></textarea><br></br>
             <label>Genre: </label>
             <select onChange={(event) => setGenre_id(event.target.value)}>
                 <AddList genres = {genres}/>
             </select>
-            <button onClick={() => {submitMovie()}}>Submit</button>
+            <button onClick={() => {submitMovie()}}>Save</button>
+            <button onClick={() => {history.push('/')}}>Cancel</button>
         </div>
     )
 }

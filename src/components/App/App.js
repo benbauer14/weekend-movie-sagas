@@ -3,6 +3,7 @@ import './App.css';
 import MovieList from '../MovieList/MovieList'
 import Add from '../Add/Add'
 import Details from '../Details/Details'
+import Edit from '../Edit/Edit'
 
 function App() {
 
@@ -22,6 +23,9 @@ function App() {
         {/* Add Movie page */}
         <Route path="/Add" exact>
           <Add />
+        </Route>
+        <Route path='/Edit' exact>
+          <Edit />
         </Route>
       </Router>
     </div>
