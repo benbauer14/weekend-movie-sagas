@@ -25,3 +25,7 @@
     margin: 10px;
     min-height: 400px;
 }
+
+.editInputs input, .editInputs textarea, .editInputs select{
+    background-image: linear-gradient(to bottom right, rgb(77, 75, 75), lightgrey);
+}
