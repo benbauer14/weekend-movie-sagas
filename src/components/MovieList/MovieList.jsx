@@ -18,14 +18,24 @@ function MovieList() {
         console.log('in getDetails')
         dispatch({type: 'FETCH_MOVIE_ID', payload: id})
     }
-    const addMovie = () => {
-      history.push('/Add')
-    }
+
+
 
     return (
+        <>
+        <div className='header'>
+            <div className='headContainer'>
+                <h1></h1>
+            </div>
+            <div className='headContainer'>
+                <h1>The Movies Saga!</h1>
+            </div>
+            <div className='headContainer'>
+                <p><button onClick={() => {history.push('/')}}>Home</button>
+                <button onClick={() => {history.push('/Add')}}>Add</button></p>
+            </div>
+        </div>
         <main>
-            <button onClick={() => {addMovie()}}>To Add</button>
-            <h1>MovieList</h1>
             <section className="grid-container">
                 {movies.map(movie => {
                     return (
@@ -37,7 +47,7 @@ function MovieList() {
                 })}
             </section>
         </main>
-
+    </>
     );
 }
 
