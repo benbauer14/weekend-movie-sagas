@@ -26,10 +26,10 @@ function MovieList() {
         <main>
             <button onClick={() => {addMovie()}}>To Add</button>
             <h1>MovieList</h1>
-            <section className="movies">
+            <section className="grid-container">
                 {movies.map(movie => {
                     return (
-                        <div key={movie.id} >
+                        <div className="movie" key={movie.id} >
                             <h3>{movie.title}</h3>
                             <img src={movie.poster} alt={movie.title} onClick={() => getDetails(movie.id)}/>
                         </div>

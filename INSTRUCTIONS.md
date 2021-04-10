@@ -103,17 +103,17 @@ Add to the detail page an edit button that brings the user to the edit page.
 
 This new page should show:
 
-- an input field (for changing the movie title), for the selected movie.
-- a textarea (for changing the movie description)
+[X] an input field (for changing the movie title), for the selected movie.
+[X] a textarea (for changing the movie description)
 
 The edit page should have the buttons:
 
-- `Cancel` button, which should bring the user to the Details Page
-- `Save` button, which should update the title and description in the database and bring the user to the Details Page
+[X] `Cancel` button, which should bring the user to the Details Page
+[X] `Save` button, which should update the title and description in the database and bring the user to the Details Page
 
 ### Other Ideas
 
-- [ ] Display the current values in the input (title) and textarea (description) on the Edit Page
+- [X] Display the current values in the input (title) and textarea (description) on the Edit Page
 - [ ] Display all genres on movie list page. Research [array_agg](https://stackoverflow.com/questions/43458174/how-to-save-and-return-javascript-object-with-subarray-in-normalized-sql) to make this possible.
 - [ ] Allow the user to select many genres as they add
     - You'll have to change the INSERT statement
