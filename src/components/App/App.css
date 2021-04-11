@@ -87,7 +87,7 @@
   max-height: 250px;
 }
 
-.description p{
+.description div{
   border: solid 2px grey;
   background-image: linear-gradient(to bottom right, rgb(77, 75, 75), lightgrey);
   width: 70%;
@@ -119,3 +119,6 @@
   margin-bottom: 95%;
 }
 
+.multiline{
+  white-space: pre-wrap;
+}

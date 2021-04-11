@@ -1,14 +1,13 @@
 import axios from "axios";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
 
 function Details (){
     const details = useSelector(store => store.details[0]);
+    const [descr, setDescr] = useState("")
+    let [genreName, setGenreName] = useState([])
     const history = useHistory()
-
-    const backHome = () => {
-    history.push('/')
-    }
 
     const deleteMovie = () =>{
         if(confirm("Are you sure you would like to delete this movie?")){
@@ -20,6 +19,28 @@ function Details (){
             })
         } else{
             console.log("it's safe")
+        }
+    }
+
+    const getGenre = () => {
+        axios.get('api/moviegenre/' + details.id).then((response) =>{
+            console.log("test", response.data[0].genre_id)
+            getGenreName(response.data)
+        }).catch((err) => {
+            console.log(err)
+        })
+    }
+
+    const getGenreName = (response) => {
+        let genre = "\n\n Genres: "
+        for(let i = 0; i < response.length; i++ ){
+            let genreID = response[i].genre_id
+            axios.get('/api/genre/name/' + genreID).then((response) =>{
+                genre += response.data[0].name + " "
+                setDescr(descr + genre)
+            }).catch((err) => {
+                console.log(err)
+            }) 
         }
     }
 
@@ -40,13 +61,13 @@ function Details (){
             <div className='detailsMain'>
                 <div></div>
                 <div className='details'>
-
-
                     <h1>{details.title}</h1>
                     <img src={details.poster} alt={details.title}/>
+                    <section className="secGenre">{descr}</section>
                 </div>
                 <div className='description'>
-                    <p>{details.description}</p>
+                    <div className="multiline">{details.description}</div>
+                    <button onClick={() => {getGenre()}}>Click</button>
                     <button onClick={() => {history.push('/')}}>Back</button>
                     <button onClick={() => {history.push('/Edit')}}>Edit</button>
                     <button onClick={() => {deleteMovie()}}>Delete</button>
