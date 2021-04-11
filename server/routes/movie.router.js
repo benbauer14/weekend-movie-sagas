@@ -30,6 +30,28 @@ router.get('/:id', (req, res) => {
 
 });
 
+router.delete('/:id', (req,res) =>{
+  console.log(req.params.id)
+  //delete from dependent movies_genre first
+  const deleteMovieGenre = `
+  DELETE FROM "movies_genres" WHERE "movie_id"=$1`
+  pool.query(deleteMovieGenre, [req.params.id]).then((response) =>{
+    console.log("success")
+    //delete from master movies table second
+    const deleteMovieQuery = `
+    DELETE FROM "movies" WHERE "id"=$1
+    `
+    pool.query(deleteMovieQuery, [req.params.id]).then((response) => {
+      console.log("deleted?", req.params)
+      res.sendStatus(200)
+    }).catch((err) => {
+      res.sendStatus(500)
+    })
+  }).catch((err) => {
+    res.sendStatus(500)
+  })
+})
+
 router.post('/', (req, res) => {
   console.log(req.body);
   // RETURNING "id" will give us back the id of the created movie

@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
 
@@ -7,6 +8,19 @@ function Details (){
 
     const backHome = () => {
     history.push('/')
+    }
+
+    const deleteMovie = () =>{
+        if(confirm("Are you sure you would like to delete this movie?")){
+            axios.delete('/api/movie/'+ details.id ).then((response) => {
+                console.log(response)
+                history.push('/')
+            }).catch((err) => {
+                console.log(err)
+            })
+        } else{
+            console.log("it's safe")
+        }
     }
 
     return(
@@ -35,6 +49,7 @@ function Details (){
                     <p>{details.description}</p>
                     <button onClick={() => {history.push('/')}}>Back</button>
                     <button onClick={() => {history.push('/Edit')}}>Edit</button>
+                    <button onClick={() => {deleteMovie()}}>Delete</button>
                 </div>
             </div>
         </div>
