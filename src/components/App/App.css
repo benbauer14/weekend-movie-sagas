@@ -87,12 +87,21 @@
   max-height: 250px;
 }
 
-.description div{
+.description .multiline{
   border: solid 2px grey;
   background-image: linear-gradient(to bottom right, rgb(77, 75, 75), lightgrey);
   width: 70%;
   min-height: 150px;
   margin-top: 10%;
+  font-size: 1vw;
+  text-align: left;
+}
+
+.description .genres{
+  border: solid 2px grey;
+  background-image: linear-gradient(to bottom right, rgb(77, 75, 75), lightgrey);
+  width: 70%;
+  min-height: 30px;
   font-size: 1vw;
   text-align: left;
 }
