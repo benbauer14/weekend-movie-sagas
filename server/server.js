@@ -13,6 +13,7 @@ app.use(express.static('build'));
 /** ---------- ROUTES ---------- **/
 app.use('/api/movie', movieRouter);
 app.use('/api/genre', genreRouter)
+//new moviegenre route to access movies_genres table
 app.use('/api/moviegenre', moviegenreRouter)
 
 /** ---------- START SERVER ---------- **/
