@@ -10,16 +10,17 @@ function MovieList() {
     const movies = useSelector(store => store.movies);
 
     useEffect(() => {
+        //on load get all movies in the database
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
 
     const getDetails = (id) => {
+        //function executed when a movie is clicked
+        //dispatches the movie ID to a reducer which stores the details on the clicked movie
         dispatch({type: 'FETCH_MOVIE_ID', payload: id})
+        //pushes to details page
         history.push('/Details')
-
     }
-
-
 
     return (
         <>

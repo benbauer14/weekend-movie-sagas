@@ -9,13 +9,17 @@ function Edit (){
 
     const history = useHistory()
     const dispatch = useDispatch()
+    // on load get genres
     useEffect(() => {
         dispatch({ type: 'FETCH_GENRES' });
     }, []);
 
+    //get genres from store
     const genres = useSelector(store => store.genres)
+    //get detail info from store
     const details = useSelector(store => store.details[0]);
 
+    //for each state set the default to the value in the store
     const [id, setID] = useState(details.id)
     const [title, setTitle] = useState(details.title)
     const [poster, setPoster] = useState(details.poster)
@@ -23,19 +27,22 @@ function Edit (){
     const [genre_id, setGenre_id] = useState(details.genre_id)
 
     const editMovie = () =>{
+        //ensure form is completely filled out
         if(title === "" || poster === "" || description === "" || genre_id === ""){
             alert("Please complete the form")
             return null
         }else{
             console.log('in post')
+            //make a post with the updated information
             axios.post('/api/movie/edit', {
                 id: id,
                 title: title,
                 poster: poster,
                 description: description,
-                genre_id: genre_id
+                //genre is not being updated at this time
             }).then((response) =>{
                 console.log('back from POST', response)
+                //return home after successful edit
                 history.push('/')
             }).catch((err) => {
                 console.log(err)

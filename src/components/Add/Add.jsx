@@ -6,6 +6,7 @@ import AddList from '../AddList/AddList'
 import './Add.css'
 
 function Add () {
+    //create reducers
     const [title, setTitle] = useState('')
     const [poster, setPoster] = useState('')
     const [description, setDescription] = useState('')
@@ -13,17 +14,22 @@ function Add () {
 
     const history = useHistory()
     const dispatch = useDispatch()
+
+    //on load get genres
     useEffect(() => {
         dispatch({ type: 'FETCH_GENRES' });
     }, []);
 
+    //get genres from store to allow adding to list
     const genres = useSelector(store => store.genres)
 
     const submitMovie = () =>{
+        //ensure inputs are not empty
         if(title === "" || poster === "" || description === "" || genre_id === ""){
             alert("Please complete the form")
             return null
         }else{
+            //post to create new movie entry in database
             axios.post('/api/movie', {
                 title: title,
                 poster: poster,
@@ -31,6 +37,7 @@ function Add () {
                 genre_id: genre_id
             }).then((response) =>{
                 console.log('back from POST', response)
+                //return home
                 history.push('/')
             }).catch((err) => {
                 console.log(err)

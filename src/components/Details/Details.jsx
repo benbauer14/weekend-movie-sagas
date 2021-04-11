@@ -9,42 +9,48 @@ function Details (){
     const history = useHistory()
 
     const deleteMovie = () =>{
+        //delete movie function
+        //confirm delete
         if(confirm("Are you sure you would like to delete this movie?")){
+            //delete call to router
             axios.delete('/api/movie/'+ details.id ).then((response) => {
                 console.log(response)
+                // if successful return home
                 history.push('/')
             }).catch((err) => {
                 console.log(err)
             })
         } else{
+            //response to console if delete is cancelled
             console.log("it's safe")
         }
     }
 
-    const getGenre = () => {
-        axios.get('api/moviegenre/' + details.id).then((response) =>{
-            console.log("test", response.data[0].genre_id)
-            getGenreName(response.data)
+    const getGenre = (detail) => {
+        //send request to movie genre server with detail id
+        axios.get('api/moviegenre/' + detail.id).then((response) =>{
+            //create variable for genres
+            let genre = "\n\n Genres: "
+            //loop through the response with the genres and build the genre string
+            for(let i = 0; i < response.data.length; i++ ){
+                console.log(i)
+                //select a genre id
+                let genreID = response.data[i].genre_id
+                //get call to genre name db
+                axios.get('/api/genre/name/' + genreID).then((response) =>{
+                    //add response to genre variable
+                    genre += response.data[0].name + " "
+                    console.log(genre)
+                    //cannot get it to log on DOM even with return
+                }).catch((err) => {
+                    console.log(err)
+                }) 
+            }
         }).catch((err) => {
             console.log(err)
         })
     }
 
-    const getGenreName = (response) => {
-        let genre = "\n\n Genres: "
-        for(let i = 0; i < response.length; i++ ){
-            let genreID = response[i].genre_id
-            axios.get('/api/genre/name/' + genreID).then((response) =>{
-                genre += response.data[0].name + " "
-                setDescr(descr + genre)
-            }).catch((err) => {
-                console.log(err)
-            }) 
-        }
-    }
-    useEffect(() => {
-        getGenre()
-    }, []);
     return(
         <>        
         <div className='header'>
