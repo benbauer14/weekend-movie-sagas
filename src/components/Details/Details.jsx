@@ -2,10 +2,13 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import DetailsGenreList from '../DetailsGenreList/DetailsGenreList'
 
 function Details (){
     const details = useSelector(store => store.details[0]);
+    const genres = useSelector(store => store.genres)
     const [descr, setDescr] = useState("")
+    const [genre, setGenre] = useState([])
     const history = useHistory()
 
     const deleteMovie = () =>{
@@ -24,31 +27,6 @@ function Details (){
             //response to console if delete is cancelled
             console.log("it's safe")
         }
-    }
-
-    const getGenre = (detail) => {
-        //send request to movie genre server with detail id
-        axios.get('api/moviegenre/' + detail.id).then((response) =>{
-            //create variable for genres
-            let genre = "\n\n Genres: "
-            //loop through the response with the genres and build the genre string
-            for(let i = 0; i < response.data.length; i++ ){
-                console.log(i)
-                //select a genre id
-                let genreID = response.data[i].genre_id
-                //get call to genre name db
-                axios.get('/api/genre/name/' + genreID).then((response) =>{
-                    //add response to genre variable
-                    genre += response.data[0].name + " "
-                    console.log(genre)
-                    //cannot get it to log on DOM even with return
-                }).catch((err) => {
-                    console.log(err)
-                }) 
-            }
-        }).catch((err) => {
-            console.log(err)
-        })
     }
 
     return(
@@ -73,6 +51,10 @@ function Details (){
                 </div>
                 <div className='description'>
                     <div className="multiline">{details.description}</div>
+                    <div className="genres">
+                        Genres:
+                        <DetailsGenreList genres={genres} />  
+                    </div>
                     <button onClick={() => {history.push('/')}}>Back</button>
                     <button onClick={() => {history.push('/Edit')}}>Edit</button>
                     <button onClick={() => {deleteMovie()}}>Delete</button>

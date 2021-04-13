@@ -97,6 +97,15 @@
   text-align: left;
 }
 
+.genres{
+  border: solid 2px grey;
+  background-image: linear-gradient(to bottom right, rgb(77, 75, 75), lightgrey);
+  width: 70%;
+  min-height: 10px;
+  font-size: 1vw;
+  text-align: left;
+}
+
 .description .genres{
   border: solid 2px grey;
   background-image: linear-gradient(to bottom right, rgb(77, 75, 75), lightgrey);

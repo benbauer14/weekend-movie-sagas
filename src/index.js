@@ -36,8 +36,11 @@ function* fetchMovieID(action) {
     //used for details
     try {
         const movies = yield axios.get('/api/movie/'+ action.payload);
+        const genres = yield axios.get('api/moviegenre/' + action.payload)
         console.log('get specific movie:', movies.data);
+        console.log('genres', genres.data)
         yield put({ type: 'SET_DETAILS', payload: movies.data });
+        yield put({ type: 'SET_GENRES', payload: genres.data })
 
     } catch {
         console.log('get all error');
